@@ -8,13 +8,14 @@ config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'my_dbt_demo'
+log-path: '/tmp/dbt-logs'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 analysis-paths: ["analyses"]
-test-paths: ["tests"]
+test-paths: ["tests"] 
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
