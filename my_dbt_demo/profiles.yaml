@@ -1,0 +1,11 @@
+my_dbt_demo:
+  outputs:
+    dev:
+      catalog: null
+      host: "{{ env_var('DATABRICKS_HOST') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      threads: 1
+      http_path: "{{ env_var('DATABRICKS_SQLHTTPPATH') }}"
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      type: databricks
+  target: dev
