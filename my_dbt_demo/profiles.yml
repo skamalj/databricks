@@ -2,7 +2,7 @@ my_dbt_demo:
   outputs:
     dev:
       catalog: null
-      host: "{{ env_var('DATABRICKS_HOST') }}"
+      host: "{{ env_var('DATABRICKS_DBT_HOST') }}"
       schema: "dbt"
       threads: 1
       http_path: "{{ env_var('DATABRICKS_SQLHTTPPATH') }}"
