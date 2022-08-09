@@ -8,11 +8,17 @@
 # COMMAND ----------
 
 # MAGIC %sh
-# MAGIC databricks repos update --path "/Repos/skamalj@outlook.com/databricks.git" --branch master
+# MAGIC CLUSTER_ID=`databricks clusters list | grep "$CLUSTER_NAME" | cut -d' ' -f 1`
+# MAGIC ORG_ID=`echo $DATABRICKS_DBT_HOST | cut -d '.' -f 1 | cut -c 5-`
+# MAGIC export DATABRICKS_SQLHTTPPATH=sql/protocolv1/o/$ORG_ID/$CLUSTER_ID
+# MAGIC echo $DATABRICKS_SQLHTTPPATH
 
 # COMMAND ----------
 
 # MAGIC %sh
+# MAGIC CLUSTER_ID=`databricks clusters list | grep "$CLUSTER_NAME" | cut -d' ' -f 1`
+# MAGIC ORG_ID=`echo $DATABRICKS_DBT_HOST | cut -d '.' -f 1 | cut -c 5-`
+# MAGIC export DATABRICKS_SQLHTTPPATH=sql/protocolv1/o/$ORG_ID/$CLUSTER_ID
 # MAGIC dbt run --profiles-dir /Workspace/Repos/skamalj@outlook.com/databricks.git/my_dbt_demo/ --project-dir /Workspace/Repos/skamalj@outlook.com/databricks.git/my_dbt_demo/
 
 # COMMAND ----------
