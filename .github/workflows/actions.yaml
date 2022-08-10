@@ -10,6 +10,6 @@ jobs:
         shell: bash
         env:
           DATABRICKS_HOST : ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN : ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_TOKEN : ${{ secrets.DB_TOKEN }}
         run: |
-          databricks repos update --path "/Repos/skamalj@outlook.com/databricks.git" --branch master
+          databricks repos update --branch master --path "/Repos/skamalj@outlook.com/databricks.git" 
