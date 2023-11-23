@@ -144,11 +144,11 @@ LOCATION "${DA.paths.sales_csv}"
 
 -- COMMAND ----------
 
-SELECT * FROM sales_csv
+create table stagedb.raw.sales_csv as SELECT * FROM sales_csv
 
 -- COMMAND ----------
 
-SELECT COUNT(*) FROM sales_csv
+SELECT COUNT(*) FROM stagedb.raw.sales_csv
 
 -- COMMAND ----------
 

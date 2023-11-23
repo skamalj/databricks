@@ -69,6 +69,11 @@
 -- COMMAND ----------
 
 -- MAGIC %python
+-- MAGIC DA
+
+-- COMMAND ----------
+
+-- MAGIC %python
 -- MAGIC print(DA.paths.kafka_events)
 -- MAGIC
 -- MAGIC files = dbutils.fs.ls(DA.paths.kafka_events)
@@ -126,7 +131,7 @@ SELECT * FROM json.`${DA.paths.kafka_events}/001.json`
 
 -- COMMAND ----------
 
-SELECT * FROM json.`${DA.paths.kafka_events}`
+SELECT * FROM json.`${DA.paths.kafka_events}` limit 10;
 
 -- COMMAND ----------
 

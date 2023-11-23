@@ -1,9 +1,49 @@
 # Databricks notebook source
 # MAGIC %sql
-# MAGIC CREATE SCHEMA IF NOT EXISTS DBT;
-# MAGIC DROP TABLE IF EXISTS dbt.diamonds;
-# MAGIC 
-# MAGIC CREATE TABLE dbt.diamonds USING CSV OPTIONS (path "/databricks-datasets/Rdatasets/data-001/csv/ggplot2/diamonds.csv", header "true")
+# MAGIC SHOW STORAGE CREDENTIALS;
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC CREATE EXTERNAL LOCATION azstore URL 'abfss://dbstage@unityadlsdatabricks.dfs.core.windows.net/catalogs' WITH (CREDENTIAL unityadls);
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC create catalog stagedb managed location 'abfss://dbstage@unityadlsdatabricks.dfs.core.windows.net/catalogs/stagedb';
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC CREATE TABLE stagedb.raw.loan_risks_upload (
+# MAGIC   loan_id BIGINT,
+# MAGIC   funded_amnt INT,
+# MAGIC   paid_amnt DOUBLE,
+# MAGIC   addr_state STRING
+# MAGIC );
+# MAGIC
+# MAGIC COPY INTO stagedb.raw.loan_risks_upload
+# MAGIC FROM 'dbfs:/databricks-datasets/learning-spark-v2/loans/loan-risks.snappy.parquet'
+# MAGIC FILEFORMAT = PARQUET;
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC
+# MAGIC CREATE TABLE stagedb.raw.department
+# MAGIC (
+# MAGIC   deptcode  INT,
+# MAGIC   deptname  STRING,
+# MAGIC   location  STRING
+# MAGIC );
+# MAGIC
+# MAGIC INSERT INTO stagedb.raw.department VALUES
+# MAGIC   (10, 'FINANCE', 'EDINBURGH'),
+# MAGIC   (20, 'SOFTWARE', 'PADDINGTON'),
+# MAGIC   (30, 'SALES', 'MAIDSTONE'),
+# MAGIC   (40, 'MARKETING', 'DARLINGTON'),
+# MAGIC   (50, 'ADMIN', 'BIRMINGHAM');
 
 # COMMAND ----------
 
