@@ -3,7 +3,7 @@
 
 # COMMAND ----------
 
-lesson_config = LessonConfig(name=None,
+lesson_config = LessonConfig(name="Kamal",
                              create_schema=True,
                              create_catalog=False,
                              requires_uc=False,
@@ -20,7 +20,7 @@ DA.conclude_setup()
 # COMMAND ----------
 
 # TODO
-my_name = None
+my_name = "Kamal"
 
 # COMMAND ----------
 

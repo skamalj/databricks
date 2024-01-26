@@ -143,6 +143,13 @@ display(example_df)
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC # Header 1
+# MAGIC * Point 1
+# MAGIC * [google](www.google.com)
+
+# COMMAND ----------
+
 # DBTITLE 0,--i18n-55b2a6c6-2fc6-4c57-8d6d-94bba244d86e
 # MAGIC %md
 # MAGIC
@@ -153,7 +160,8 @@ display(example_df)
 # COMMAND ----------
 
 files = dbutils.fs.ls(f"{DA.paths.datasets}/nyctaxi-with-zipcodes/data")
-display(files)
+df = spark.createDataFrame(files)
+display(df.select(["name"]).collect())
 
 # COMMAND ----------
 
